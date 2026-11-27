@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { DEFAULT_TARGET, joinBase, resolveTarget, targets } from '../src/config/deploy.ts';
 
-test('Standard ist die Vorschau unter github.io mit base', () => {
-  assert.equal(DEFAULT_TARGET, 'preview');
-  const t = resolveTarget('');
+test('Vorschau unter github.io mit base', () => {
+  assert.equal(DEFAULT_TARGET, 'production');
+  const t = resolveTarget('preview');
   assert.equal(t.site, 'https://mltmllr.github.io');
   assert.equal(t.base, '/agentunit-site');
   assert.equal(t.indexable, false);

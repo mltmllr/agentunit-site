@@ -14,9 +14,9 @@ import path from 'node:path';
 
 const args = process.argv.slice(2);
 const siteFlag = args.indexOf('--site');
-const site = siteFlag >= 0 ? args.splice(siteFlag, 2)[1] : 'https://mltmllr.github.io';
+const site = siteFlag >= 0 ? args.splice(siteFlag, 2)[1] : 'https://www.agentunit.com';
 const baseFlag = args.indexOf('--base');
-const baseArg = baseFlag >= 0 ? args.splice(baseFlag, 2)[1] : '/agentunit-site';
+const baseArg = baseFlag >= 0 ? args.splice(baseFlag, 2)[1] : '/';
 // Astro legt die Dateien ohne base-Präfix ab, die Links tragen es aber. Hier abziehen.
 const basePrefix = baseArg.replace(/\/+$/, '');
 const root = path.resolve(args[0] ?? 'dist');

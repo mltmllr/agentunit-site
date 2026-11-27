@@ -15,7 +15,7 @@ export const targets = {
 
 export type TargetName = keyof typeof targets;
 
-export const DEFAULT_TARGET: TargetName = 'preview';
+export const DEFAULT_TARGET: TargetName = 'production';
 
 export function resolveTarget(env: string | undefined = process.env.DEPLOY_TARGET) {
   if (env === undefined || env === '') return { name: DEFAULT_TARGET, ...targets[DEFAULT_TARGET] };

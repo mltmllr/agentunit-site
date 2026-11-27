@@ -24,4 +24,4 @@ jobs:
       - name: Test
         run: npm test
       - name: Linkcheck
-        run: npm run check:links -- dist
+        run: npm run check:links -- dist --site https://www.agentunit.com --base /

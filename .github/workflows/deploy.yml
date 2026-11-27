@@ -30,12 +30,12 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Vorschau unter https://mltmllr.github.io/agentunit-site/ (src/config/deploy.ts)
-          DEPLOY_TARGET: preview
+          # Live unter https://www.agentunit.com/ (src/config/deploy.ts)
+          DEPLOY_TARGET: production
       - name: Test (inkl. Prüfung von dist/)
         run: npm test
       - name: Linkcheck
-        run: npm run check:links -- dist
+        run: npm run check:links -- dist --site https://www.agentunit.com --base /
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
