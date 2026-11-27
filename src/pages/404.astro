@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../config/site';
+---
+
+<Base title="Page not found" description="This page does not exist." path="/404.html" noindex>
+  <section class="sect">
+    <div class="sect-narrow prose">
+      <h1>Page not found</h1>
+      <p>This page does not exist.</p>
+      <a href={url('/')} class="au-btn au-btn-secondary">&larr; Back to home</a>
+    </div>
+  </section>
+</Base>

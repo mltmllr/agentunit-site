@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Team from '../components/Team.astro';
+import { TTM_URL, url } from '../config/site';
+import { team } from '../config/team';
+---
+
+<Base path="/" current="home">
+  <Hero>
+    <h1>Private Research Lab for Applied AI in <span class="accent">Digital Marketing</span></h1>
+    <p class="hero-credit">by Malte Möller</p>
+  </Hero>
+
+  <Section id="projects" label="Current projects" title="What we are working on">
+    <div class="grid-2 sect-grid">
+      <ProjectCard
+        name="General Agent OS"
+        badge="Coming soon"
+        status="soon"
+      />
+      <ProjectCard
+        name="The Technical Marketer"
+        badge="Live"
+        status="live"
+        description="A German-language online magazine and news channel on technical marketing: analytics and tracking, AI, and SEO/GEO. Researched and written by AI agents, approved by the publisher."
+        href={url('/projects/the-technical-marketer/')}
+        externalHref={TTM_URL}
+        externalLabel="ttm.agentunit.com"
+      />
+    </div>
+  </Section>
+
+  <Team members={team} />
+</Base>

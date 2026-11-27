@@ -1,0 +1,15 @@
+---
+import Circuit from './Circuit.astro';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+
+<section class:list={['hero', { 'hero-compact': compact }]}>
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <Circuit />
+  <div class="scanline"></div>
+  <div class="scanline"></div>
+  <slot />
+</section>

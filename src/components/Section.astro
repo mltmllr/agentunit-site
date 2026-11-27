@@ -1,0 +1,16 @@
+---
+interface Props { id?: string; label?: string; labelClass?: string; title?: string; void?: boolean; center?: boolean; narrow?: boolean }
+const { id, label, labelClass = 'au-text-crimson', title, void: isVoid = false, center = false, narrow = false } = Astro.props;
+---
+
+<div class="sect-divider"></div>
+<section id={id} class:list={['sect', { 'sect-void': isVoid, 'sect-center': center }]}>
+  <div class:list={['sect-inner', { 'sect-narrow': narrow }]}>
+    <div>
+      {label && <div class={`sect-label ${labelClass}`}>{label}</div>}
+      {title && <h2 class="sect-title" set:html={title} />}
+      <slot name="intro" />
+    </div>
+    <slot />
+  </div>
+</section>

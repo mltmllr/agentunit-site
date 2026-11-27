@@ -1,0 +1,43 @@
+---
+/** Dekorative PCB-Leiterbahnen für den Hero (eigene Grafik im Stil des Designsystems). */
+---
+
+<svg class="hero-circuit" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="circuit-fade" cx="50%" cy="50%" r="60%">
+      <stop offset="45%" stop-color="#fff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="1" />
+    </radialGradient>
+    <mask id="circuit-mask"><rect width="1200" height="600" fill="url(#circuit-fade)" /></mask>
+  </defs>
+  <g mask="url(#circuit-mask)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#d43d42" opacity="0.55">
+      <path d="M0 110h180l40 40h160l30 30" />
+      <path d="M0 470h120l50-50h210" />
+      <path d="M1200 130h-170l-40 40h-150" />
+      <path d="M1200 480h-140l-60-60h-190l-30-30" />
+    </g>
+    <g stroke="#d4587a" opacity="0.4">
+      <path d="M60 0v90l40 40" />
+      <path d="M1140 600v-100l-40-40" />
+      <path d="M0 300h90l30-30h60" />
+      <path d="M1200 300h-90l-30 30h-60" />
+    </g>
+    <g fill="#c4593a" opacity="0.9">
+      <circle cx="410" cy="180" r="4" />
+      <circle cx="380" cy="420" r="4" />
+      <circle cx="840" cy="170" r="4" />
+      <circle cx="810" cy="390" r="4" />
+    </g>
+    <g fill="#d43d42" opacity="0.8">
+      <circle cx="100" cy="130" r="3" />
+      <circle cx="1100" cy="460" r="3" />
+      <circle cx="180" cy="270" r="3" />
+      <circle cx="1020" cy="330" r="3" />
+    </g>
+    <g stroke="#4a7d8c" opacity="0.45">
+      <rect x="40" y="520" width="44" height="44" rx="4" />
+      <rect x="1116" y="40" width="44" height="44" rx="4" />
+    </g>
+  </g>
+</svg>

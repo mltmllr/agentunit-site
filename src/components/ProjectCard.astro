@@ -1,0 +1,33 @@
+---
+/**
+ * Projekt-Kachel. Ohne `href` (Coming soon) ist die Kachel rein informativ:
+ * kein Link, keine Projektseite.
+ */
+interface Props {
+  name: string;
+  description?: string;
+  badge: string;
+  status: 'live' | 'soon';
+  href?: string;
+  externalHref?: string;
+  externalLabel?: string;
+}
+const { name, description, badge, status, href, externalHref, externalLabel } = Astro.props;
+---
+
+<article class:list={['project-card', status === 'live' ? 'is-live au-card-trace-crimson' : 'is-soon']}>
+  <span class:list={['au-badge', status === 'live' ? 'au-badge-crimson' : 'au-badge-slate']}>
+    <span class:list={['au-status-dot', status === 'live' ? 'au-status-dot-danger au-status-dot-pulse' : 'au-status-dot-idle']} style="width:6px;height:6px;margin-right:6px;"></span>
+    {badge}
+  </span>
+  <h3 class="project-name">{name}</h3>
+  {description && <p class="project-desc">{description}</p>}
+  {(href || externalHref) && (
+    <div class="project-actions">
+      {href && <a href={href} class="au-btn au-btn-primary">Project page &rarr;</a>}
+      {externalHref && (
+        <a href={externalHref} class="au-btn au-btn-secondary" rel="noopener">{externalLabel} <span aria-hidden="true">&nearr;</span></a>
+      )}
+    </div>
+  )}
+</article>

@@ -1,0 +1,103 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import { TTM_URL, url } from '../../config/site';
+
+const channels = [
+  { icon: '&#9783;', cls: 'icon-crimson', trace: 'crimson', title: 'Analytics and Tracking', text: 'GA4, Google Tag Manager, Stape, Looker Studio and comparable tracking topics.' },
+  { icon: '&#10070;', cls: 'icon-copper', trace: 'copper', title: 'AI', text: 'AI tools and models for marketing work.' },
+  { icon: '&#9678;', cls: 'icon-steel', trace: 'steel', title: 'SEO/GEO', text: 'Search engine optimization and visibility in AI answers.' },
+];
+const formats = [
+  { title: 'Breaking news', text: 'The first sentence says what happened, who it affects and from when. A few sentences of detail follow.' },
+  { title: 'Weekly update', text: 'One short overview per calendar week, with one article per category and subheadings only for real news.' },
+  { title: 'Primary sources and FAQ', text: 'Every article ends with a short FAQ and a list of the sources it is based on.' },
+];
+const facts = [
+  ['Language', 'German'],
+  ['Topics', 'Analytics and tracking, AI, SEO/GEO'],
+  ['Audience', 'Online marketers'],
+  ['Authors', 'AI agents research and write the articles'],
+  ['Editorial control', 'The publisher approves every article before it goes live'],
+  ['Delivery', 'Website and RSS feeds, also per category'],
+  ['Independence', 'Independent news channel, not an offering by Google'],
+];
+---
+
+<Base
+  title="The Technical Marketer"
+  description="The Technical Marketer is a German-language online magazine and news channel on technical marketing: analytics and tracking, AI, and SEO/GEO. Articles are researched and written by AI agents and approved by the publisher."
+  path="/projects/the-technical-marketer/"
+  current="ttm"
+>
+  <Hero compact>
+    <a href={url('/#projects')} class="hero-back">&larr; All projects</a>
+    <span class="au-badge au-badge-crimson hero-badge">
+      <span class="au-status-dot au-status-dot-danger au-status-dot-pulse" style="width:6px;height:6px;margin-right:6px;"></span>
+      Online magazine &middot; German
+    </span>
+    <h1>The Technical<br /><span class="accent">Marketer</span></h1>
+    <p class="hero-sub">
+      A news channel on technical marketing. Short, reliable and with a primary source: what changes in tracking, SEO/GEO and AI tools, and what it means for your work.
+    </p>
+    <div class="hero-actions">
+      <a href={TTM_URL} class="au-btn au-btn-primary au-btn-lg" rel="noopener">Visit ttm.agentunit.com <span aria-hidden="true">&nearr;</span></a>
+      <a href="#how-it-works" class="au-btn au-btn-secondary au-btn-lg">How it works</a>
+    </div>
+  </Hero>
+
+  <Section id="topics" label="Topics" title="Three categories.<br />One channel.">
+    <p class="sect-desc" slot="intro">The Technical Marketer covers what changes for online marketers in analytics and tracking, AI and search.</p>
+    <div class="grid-3 sect-grid">
+      {channels.map((c) => (
+        <div class={`au-card au-card-trace-${c.trace} feature-item`}>
+          <div class={`feature-icon ${c.cls}`} aria-hidden="true" set:html={c.icon} />
+          <h3>{c.title}</h3>
+          <p>{c.text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="formats" label="Formats" title="What you get." void>
+    <div class="grid-3 sect-grid">
+      {formats.map((f) => (
+        <div class="au-card feature-item">
+          <h3 class="au-text-crimson">{f.title}</h3>
+          <p>{f.text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section id="how-it-works" label="How it works" title="Agents write.<br />The publisher decides.">
+    <p class="sect-desc" slot="intro">Articles are researched and written by AI agents. Nothing goes live without the approval of the publisher.</p>
+    <div class="au-card flow">
+      <div class="flow-node accent"><span class="flow-k">Step 1</span>AI agents research the sources</div>
+      <div class="flow-arrow" aria-hidden="true">&darr;</div>
+      <div class="flow-node"><span class="flow-k">Step 2</span>AI agents write the article</div>
+      <div class="flow-arrow" aria-hidden="true">&darr;</div>
+      <div class="flow-node"><span class="flow-k">Step 3</span>The publisher reviews and approves it</div>
+      <div class="flow-arrow" aria-hidden="true">&darr;</div>
+      <div class="flow-node accent"><span class="flow-k">Result</span>The article is published on ttm.agentunit.com</div>
+    </div>
+  </Section>
+
+  <Section id="facts" label="At a glance" title="Key facts." void>
+    <ul class="facts">
+      {facts.map(([k, v]) => (
+        <li><span class="k">{k}</span><span class="v">{v}</span></li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section center>
+    <h2 class="sect-title" slot="intro" style="font-size:clamp(1.5rem,3vw,var(--au-text-3xl))">Read the latest updates.</h2>
+    <p class="sect-desc" slot="intro" style="margin-bottom:var(--au-space-8)">The channel is published in German.</p>
+    <div class="hero-actions">
+      <a href={TTM_URL} class="au-btn au-btn-primary au-btn-lg" rel="noopener">Visit ttm.agentunit.com <span aria-hidden="true">&nearr;</span></a>
+      <a href={url('/')} class="au-btn au-btn-secondary au-btn-lg">&larr; All projects</a>
+    </div>
+  </Section>
+</Base>

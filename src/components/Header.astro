@@ -1,0 +1,24 @@
+---
+import { SHOW_TEAM, url } from '../config/site';
+
+interface Props { current?: string }
+const { current } = Astro.props;
+
+const links = [
+  { id: 'home', label: 'Home', href: url('/') },
+  { id: 'ttm', label: 'The Technical Marketer', href: url('/projects/the-technical-marketer/') },
+  ...(SHOW_TEAM ? [{ id: 'team', label: 'Team', href: url('/#team') }] : []),
+];
+---
+
+<header class="site-nav">
+  <a href={url('/')} class="site-nav-logo" aria-label="AgentUnit, home"><em>Agent</em>Unit</a>
+  <button class="site-nav-toggle" type="button" aria-label="Open or close menu" aria-expanded="false" aria-controls="site-menu">&#9776;</button>
+  <nav aria-label="Main navigation" style="height:100%">
+    <ul class="site-nav-links" id="site-menu">
+      {links.map((l) => (
+        <li><a href={l.href} aria-current={current === l.id ? 'page' : undefined}>{l.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
