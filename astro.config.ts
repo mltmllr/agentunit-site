@@ -14,7 +14,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const { pathname } = new URL(page);
-        return !/\/(legal-notice|privacy|team|404)\/$/.test(pathname);
+        return !/\/(legal-notice|privacy|404)\/$/.test(pathname);
       },
     }),
   ],

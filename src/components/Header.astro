@@ -1,5 +1,5 @@
 ---
-import { SHOW_TEAM, url } from '../config/site';
+import { url } from '../config/site';
 
 interface Props { current?: string }
 const { current } = Astro.props;
@@ -7,7 +7,7 @@ const { current } = Astro.props;
 const links = [
   { id: 'home', label: 'Home', href: url('/') },
   { id: 'ttm', label: 'The Technical Marketer', href: url('/projects/the-technical-marketer/') },
-  ...(SHOW_TEAM ? [{ id: 'team', label: 'Team', href: url('/#team') }] : []),
+  { id: 'team', label: 'Team', href: url('/team/') },
 ];
 ---
 

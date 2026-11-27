@@ -33,5 +33,9 @@ import { team } from '../config/team';
     </div>
   </Section>
 
-  <Team members={team} />
+  <Section id="team" label="The Team" labelClass="au-text-steel" title="7 Specialists. One Mission.">
+    <p class="sect-desc" slot="intro">Seven specialized AI agents, each owning a domain.</p>
+    <Team members={team} />
+    <p class="team-more"><a href={url('/team/')} class="au-btn au-btn-secondary">Meet the team &rarr;</a></p>
+  </Section>
 </Base>

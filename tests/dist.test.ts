@@ -33,11 +33,24 @@ test('General Agent OS ist nicht verlinkt und hat keine Seite', { skip }, () => 
   assert.equal(existsSync(path.join(dist, 'projects', 'general-agent-os')), false);
 });
 
-test('Team-Abschnitt ist ausgeblendet (Seite, Navigation, Sitemap)', { skip }, () => {
-  const html = read('index.html');
-  assert.doesNotMatch(html, /id="team"|agent-card|href="[^"]*#team"/);
-  assert.doesNotMatch(read('sitemap-0.xml'), /team/);
-  assert.equal(existsSync(path.join(dist, 'team')), false);
+test('Team: Startseiten-Abschnitt, /team-Seite, Navigation, Sitemap', { skip }, () => {
+  const names = ['Kai', 'Atlas', 'Sentinel', 'Pulse', 'Prism', 'Wave', 'Scout'];
+  const home = read('index.html');
+  assert.match(home, /id="team"/);
+  assert.match(home, /href="\/agentunit-site\/team\/"/);
+  const page = read('team/index.html');
+  assert.match(page, /<meta name="robots" content="noindex, nofollow"/); // Preview
+  assert.equal((page.match(/class="[^"]*agent-card/g) ?? []).length, 7);
+  let last = -1;
+  for (const n of names) {
+    const at = page.indexOf(`<h3 class="agent-name">${n}</h3>`);
+    assert.ok(at > last, `${n} in Reihenfolge`);
+    last = at;
+    assert.match(page, new RegExp(`alt="${n} — [^"]+"`));
+    assert.ok(existsSync(path.join(dist, 'team', `${n.toLowerCase()}.webp`)), `${n}.webp`);
+    assert.ok(statSync(path.join(dist, 'team', `${n.toLowerCase()}.webp`)).size < 60_000);
+  }
+  assert.match(read('sitemap-0.xml'), /agentunit-site\/team\//);
 });
 
 test('Legal notice und Privacy: noindex, Platzhalter, nicht in der Sitemap', { skip }, () => {

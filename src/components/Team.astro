@@ -1,38 +1,33 @@
 ---
 /**
- * Team-Abschnitt (Layout der alten team.html: Karten mit Avatar, Name, Rolle).
- * Wird nur gerendert, wenn SHOW_TEAM in src/config/site.ts true ist und
- * Mitglieder übergeben werden. Ohne Foto erscheinen die Initialen.
- * Eigene Avatare unter public/team/ ablegen und `avatar` setzen (Alt-Text kommt aus dem Namen).
+ * Team-Abschnitt (Layout der alten team.html). `full`: komplette Karten mit
+ * Beschreibung, Expertise und Values (Seite /team). Sonst kompakte Karten (Startseite).
  */
-import { SHOW_TEAM, url } from '../config/site';
+import { url } from '../config/site';
 import type { Member } from '../config/team';
 
-interface Props { members?: Member[] }
-const { members = [] } = Astro.props;
-const initials = (name: string) => name.split(/\s+/).map((p) => p[0]).slice(0, 2).join('').toUpperCase();
-const show = SHOW_TEAM && members.length > 0;
+interface Props { members: Member[]; full?: boolean }
+const { members, full = false } = Astro.props;
 ---
 
-{show && (
-  <>
-    <div class="sect-divider"></div>
-    <section class="sect" id="team">
-      <div class="sect-inner">
-        <div class="sect-label au-text-steel">The Team</div>
-        <h2 class="sect-title">Team</h2>
-        <div class="grid-4 sect-grid">
-          {members.map((m) => (
-            <div class="agent-card">
-              <div class="agent-avatar">
-                {m.avatar ? <img src={url(m.avatar)} alt={`Portrait of ${m.name}`} width="140" height="140" loading="lazy" /> : <span aria-hidden="true">{initials(m.name)}</span>}
-              </div>
-              <div class="agent-name">{m.name}</div>
-              <p class="agent-role">{m.role}</p>
-            </div>
-          ))}
-        </div>
+<div class:list={['team-grid', { 'team-grid-full': full }]}>
+  {members.map((m, i) => (
+    <article class:list={['agent-card', { 'agent-card-full': full }]}>
+      <div class="agent-avatar">
+        <img src={url(m.avatar)} alt={m.alt} width="140" height="140" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
       </div>
-    </section>
-  </>
-)}
+      <h3 class="agent-name">{m.name}</h3>
+      <p class="agent-role">{m.role}</p>
+      {full && (
+        <>
+          <p class="agent-tag"><span class="au-badge">{m.tag}</span></p>
+          <p class="agent-desc">{m.description}</p>
+          <dl class="agent-facts">
+            <dt>Expertise</dt><dd>{m.expertise}</dd>
+            <dt>Values</dt><dd>{m.values}</dd>
+          </dl>
+        </>
+      )}
+    </article>
+  ))}
+</div>

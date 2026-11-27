@@ -40,7 +40,7 @@ Reihenfolge wie in CI: `npm run build && npm test && npm run check:links -- dist
 ```text
 astro.config.ts                  site/base aus src/config/deploy.ts, Sitemap-Filter
 src/config/deploy.ts             Deploy-Ziele preview/production (Domain, base, indexierbar)
-src/config/site.ts               Texte, SHOW_TEAM-Flag, TTM-URL, url()-Helfer
+src/config/site.ts               Texte, TTM-URL, url()-Helfer
 src/config/team.ts               Team-Mitglieder (derzeit leer)
 src/layouts/Base.astro           Head (Meta, OG, canonical, robots), Nav, Footer
 src/components/                  Header, Footer, Hero, Circuit, Section, ProjectCard, Team
@@ -57,14 +57,9 @@ tests/                           node:test (deploy.test.ts, dist.test.ts)
 
 Kachel: `<ProjectCard>` in `src/pages/index.astro`. Ohne `href` ist sie rein informativ („Coming soon“). Projektseiten liegen unter `src/pages/projects/`. Interne Links immer mit `url('/pfad/')` aus `src/config/site.ts` bauen, damit `base` stimmt.
 
-## Team-Abschnitt (ausgeblendet)
+## Team
 
-Die Komponente `src/components/Team.astro` (Karten mit Avatar, Name, Rolle, Layout der alten `team.html`) ist vorbereitet, aber aus. Solange `SHOW_TEAM = false` in `src/config/site.ts` steht oder `src/config/team.ts` leer ist, wird nichts gerendert: kein Abschnitt, kein Nav-Eintrag, kein Sitemap-Eintrag. Einschalten:
-
-1. Mitglieder in `src/config/team.ts` eintragen (`name`, `role`, optional `avatar`, z. B. `/team/name.jpg` mit Datei in `public/team/`; ohne Bild erscheinen Initialen).
-2. `SHOW_TEAM = true` in `src/config/site.ts`.
-
-Alte Avatare aus dem früheren Repo sind bewusst nicht enthalten.
+Sieben Agenten (Kai, Atlas, Sentinel, Pulse, Prism, Wave, Scout): Daten in `src/config/team.ts` (Texte aus der alten `team.html`), Komponente `src/components/Team.astro`. Kompakt als Abschnitt `#team` auf der Startseite, vollständig unter `/team/`. Avatare als WebP (300 px) in `public/team/`.
 
 ## Deployment (Vorschau)
 

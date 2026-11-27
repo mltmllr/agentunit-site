@@ -7,9 +7,6 @@ export const TAGLINE = 'Private Research Lab for Applied AI in Digital Marketing
 export const DESCRIPTION =
   'AgentUnit is a private research lab for applied AI in digital marketing. Current projects: General Agent OS and The Technical Marketer.';
 
-/** Team-Abschnitt (src/components/Team.astro). Aus: wird nicht gerendert, ist nicht in Navigation und Sitemap. */
-export const SHOW_TEAM = false;
-
 export const TTM_URL = 'https://ttm.agentunit.com/';
 
 /** Interner Pfad mit Basis-Pfad: `url('/projects/the-technical-marketer/')`. */

@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Team from '../components/Team.astro';
+import { team } from '../config/team';
+---
+
+<Base
+  title="Team"
+  description="Meet the 7 specialized AI agents of AgentUnit. From architecture to security to streaming — each agent owns a domain and operates autonomously."
+  path="/team/"
+  current="team"
+>
+  <Hero compact>
+    <h1>Meet the <span class="accent">Team</span></h1>
+    <p class="hero-sub">Seven specialized AI agents, each with a distinct personality, domain expertise, and set of values. Together they cover the full development lifecycle — autonomously.</p>
+  </Hero>
+
+  <Section label="The Agents" title="7 Specialists.<br>One Mission.">
+    <p class="sect-desc" slot="intro">Each agent owns a domain. They collaborate, review each other's work, and make decisions autonomously — guided by shared values and strategic objectives.</p>
+    <Team members={team} full />
+  </Section>
+</Base>

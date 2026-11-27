@@ -186,7 +186,18 @@
 .flow-k { display: block; font-size: var(--au-text-xs); color: var(--au-text-tertiary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
 .flow-arrow { color: var(--au-border-strong); }
 
-/* --- Team (Komponente, derzeit per Flag aus) --- */
+/* --- Team --- */
+.team-grid { display: grid; gap: var(--au-space-6); grid-template-columns: repeat(4, 1fr); margin-top: var(--au-space-12); }
+.team-grid-full { grid-template-columns: repeat(3, 1fr); }
+.team-more { text-align: center; margin-top: var(--au-space-10); }
+.agent-card-full { display: flex; flex-direction: column; align-items: center; }
+.agent-tag { margin: var(--au-space-3) 0 0; }
+.agent-desc { font-size: var(--au-text-sm); color: var(--au-text-secondary); line-height: 1.7; margin: var(--au-space-3) 0 0; }
+.agent-facts { text-align: left; width: 100%; margin: auto 0 0; padding-top: var(--au-space-4); border-top: 1px solid var(--au-border-faint); }
+.agent-card-full .agent-desc { margin-bottom: var(--au-space-4); }
+.agent-facts dt { font-size: var(--au-text-xs); font-weight: var(--au-weight-semibold); letter-spacing: 0.1em; text-transform: uppercase; color: var(--au-text-tertiary); margin-bottom: var(--au-space-1); }
+.agent-facts dd { font-size: var(--au-text-xs); color: var(--au-text-secondary); line-height: 1.6; margin: 0 0 var(--au-space-3); }
+.agent-facts dd:last-child { margin-bottom: 0; }
 .agent-card {
   background: var(--au-bg-raised); border: 1px solid var(--au-border-faint);
   border-radius: var(--au-radius-lg); padding: var(--au-space-8) var(--au-space-6);
@@ -222,7 +233,7 @@
 .footer-copy { font-size: var(--au-text-xs); color: var(--au-text-tertiary); margin: var(--au-space-6) 0 0; }
 
 /* --- Responsiv --- */
-@media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 1024px) { .grid-4, .team-grid { grid-template-columns: repeat(2, 1fr); } .team-grid-full { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
   .site-nav { padding: 0 var(--au-space-4); }
   .site-nav-links { display: none; }
@@ -237,7 +248,7 @@
   .sect { padding: var(--au-space-16) var(--au-space-4); }
   .hero { min-height: 62vh; padding: var(--au-space-16) var(--au-space-4); }
   .hero-compact { min-height: 56vh; }
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4, .team-grid, .team-grid-full { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; align-items: center; }
   .project-card { padding: var(--au-space-6); }
   .facts li { grid-template-columns: 1fr; gap: var(--au-space-1); }
