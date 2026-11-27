@@ -10,7 +10,7 @@
  */
 export const targets = {
   preview: { site: 'https://mltmllr.github.io', base: '/agentunit-site', indexable: false },
-  production: { site: 'https://www.agentunit.com', base: '/', indexable: true },
+  production: { site: 'https://www.agentunit.com', base: '/', indexable: false },
 } as const;
 
 export type TargetName = keyof typeof targets;

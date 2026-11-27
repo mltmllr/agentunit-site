@@ -14,7 +14,7 @@ test('Produktion: www.agentunit.com ohne base, indexierbar', () => {
   const t = resolveTarget('production');
   assert.equal(t.site, 'https://www.agentunit.com');
   assert.equal(t.base, '/');
-  assert.equal(t.indexable, true);
+  assert.equal(t.indexable, false);
 });
 
 test('unbekanntes Ziel bricht ab', () => {

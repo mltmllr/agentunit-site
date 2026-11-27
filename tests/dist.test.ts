@@ -39,7 +39,7 @@ test('Team: Startseiten-Abschnitt, /team-Seite, Navigation, Sitemap', { skip }, 
   assert.match(home, /id="team"/);
   assert.match(home, /href="\/team\/"/);
   const page = read('team/index.html');
-  assert.doesNotMatch(page, /noindex/); // Produktion
+  assert.match(page, /noindex/); // vorerst noindex
   assert.equal((page.match(/class="[^"]*agent-card/g) ?? []).length, 7);
   let last = -1;
   for (const n of names) {
